@@ -6,26 +6,26 @@ import "react-toastify/dist/ReactToastify.css";
 import Swal from "sweetalert2";
 import auth from "../firebase.init";
 
-const ShowTask = ({ task }) => {
+const ShowTask = ({ task, setItems, items }) => {
   const [user] = useAuthState(auth);
-  const [items, setItems] = useState([]);
+  // const [items, setItems] = useState([]);
   const [complete, setComplete] = useState([]);
   const [set, setSet] = useState(false);
-  useEffect(() => {
-    const getItems = async () => {
-      // const email = user?.email;
-      const url = "http://localhost:5001/tasks";
-      try {
-        const { data } = await axios.get(url);
-        console.log(data);
-        setItems(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getItems();
-  }, []);
-  console.log(task);
+  // useEffect(() => {
+  //   const getItems = async () => {
+  //     // const email = user?.email;
+  //     const url = "http://localhost:5001/tasks";
+  //     try {
+  //       const { data } = await axios.get(url);
+  //       console.log(data);
+  //       setItems(data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   getItems();
+  // }, []);
+  // console.log(task);
   // useEffect(() => {
   //   fetch("http://localhost:5001/tasks")
   //     .then((res) => res.json())
@@ -35,7 +35,7 @@ const ShowTask = ({ task }) => {
 
   // Delete a task
   const itemDelete = (id) => {
-    console.log(id);
+    // console.log(id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -64,8 +64,8 @@ const ShowTask = ({ task }) => {
     // setComplete(item);
     // const completedTask = [...complete, item];
     // setComplete(completedTask);
-    console.log(items);
-    console.log(item.completed);
+    // console.log(items);
+    // console.log(item.completed);
     // items.filter((ite) => {
     // if (ite._id === item._id) {
     item.completed = "true";
